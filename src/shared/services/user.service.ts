@@ -1,7 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {catchError, shareReplay, throwError} from "rxjs";
-import {error} from "@angular/compiler-cli/src/transformers/util";
+import {User, UserList} from "../models/user.model";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class UserService {
 
 
   getAllUsers() {
-    return this.http.get<any>(`${this.baseUrl}`).pipe(
+    return this.http.get<UserList>(`${this.baseUrl}`).pipe(
       shareReplay(),
       catchError((error) => {
         return throwError(() => error);
@@ -21,7 +21,7 @@ export class UserService {
   }
 
   getUserById(id: number) {
-    return this.http.get<any>(`${this.baseUrl}/${id}`).pipe(
+    return this.http.get<User>(`${this.baseUrl}/${id}`).pipe(
       shareReplay(),
       catchError((error) => {
         return throwError(() => error);
@@ -40,7 +40,7 @@ export class UserService {
   }
 
   updateUser(user: any) {
-    return this.http.put<any>(`${this.baseUrl}`, user).pipe(
+    return this.http.put<any>(`${this.baseUrl}/${user.id}`, user).pipe(
       shareReplay(),
       catchError((error) => {
         return throwError(() => error);

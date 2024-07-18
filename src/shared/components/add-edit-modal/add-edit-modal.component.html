@@ -1,22 +1,40 @@
 <ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-  </div>
+<!--  <div class="modal-header">-->
+<!--    <img src="./assets/images/user.png" alt="user">-->
+<!--  </div>-->
   <div class="modal-body">
-    <form>
+    <form [formGroup]="userForm" (ngSubmit)="submitUserForm()" >
       <div class="mb-3">
-        <label for="name" class="form-label">Disabled input</label>
-        <input type="text" id="name" class="form-control" placeholder="Name">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" id="name" class="form-control" placeholder="Name" formControlName="name">
+        <p class="error-msg p-0"
+           *ngIf="userForm.controls?.['name']?.errors && (userForm.controls?.['name']?.touched || userForm.controls?.['name']?.dirty)">
+          {{
+            (userForm.controls?.['name']?.hasError("required")
+                ? "field is required"
+                : null
+            )
+          }}
+        </p>
       </div>
       <div class="mb-3">
-        <label for="jobTitle" class="form-label">Disabled input</label>
-        <input type="text" id="jobTitle" class="form-control" placeholder="Job title">
+        <label for="jobTitle" class="form-label">Job Title</label>
+        <input type="text" id="jobTitle" class="form-control" placeholder="Job title" formControlName="job">
+        <p class="error-msg p-0"
+           *ngIf="userForm.controls?.['job']?.errors && (userForm.controls?.['job']?.touched || userForm.controls?.['job']?.dirty)">
+          {{
+            (userForm.controls?.['job']?.hasError("required")
+                ? "field is required"
+                : null
+            )
+          }}
+        </p>
       </div>
-    </form>
-  </div>
+
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-secondary" (click)="modal.close('Save click')">Cancel</button>
-    <button type="button" class="btn btn-outline-secondary" (click)="modal.close('Save click')">Save</button>
+    <button type="submit" class="btn btn-outline-secondary save">{{isEditMode ? 'Save' : 'Add'}}</button>
+  </div>
+    </form>
   </div>
 </ng-template>
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>

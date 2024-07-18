@@ -1,12 +1,10 @@
 <ng-template #content let-modal>
-  <div class="modal-header">
-    Are you sure you want to delete
-  </div>
   <div class="modal-body">
-    <p>mohand</p>
+    Are you sure you want to delete
+    <p>{{selectedUser.first_name}} {{selectedUser.last_name}}</p>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-secondary" (click)="modal.close('Save click')">No</button>
-    <button type="button" class="btn btn-outline-secondary save" (click)="modal.close('Save click')">Yes</button>
+    <button type="button" class="btn btn-outline-secondary save" (click)="deleteUser()">Yes</button>
   </div>
 </ng-template>

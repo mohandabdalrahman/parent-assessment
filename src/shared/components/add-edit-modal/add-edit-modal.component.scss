@@ -1,0 +1,45 @@
+:host {
+  position: relative;
+  top: 5%;
+}
+
+.modal {
+  &-header {
+    box-sizing: border-box;
+    height: 106px;
+    width: 106px;
+    border: 3px solid #FFFFFF;
+    background-color: #7F8C8D;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -3em;
+    left: 50%;
+    transform: translateX(-50%);
+
+    img {
+
+    }
+  }
+
+  &-footer {
+    justify-content: center;
+    border: none;
+    button {
+      height: 40px;
+      width: 160px;
+      border: 1px solid #8E44AD;
+      border-radius: 20px;
+      background-color: #F5F5F5;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+      &.save{
+        background-color: #8E44AD;
+        color: #FFFFFF;
+      }
+    }
+  }
+}
+
+

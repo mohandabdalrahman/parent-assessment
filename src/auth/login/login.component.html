@@ -1,1 +1,43 @@
-<p>login works!</p>
+<div class="login_container">
+  <div class="login_container-image">
+    <img src="./assets/images/Rectangle.png" alt="login image">
+  </div>
+  <div class="login_container-form">
+    <h3>Welcome back!</h3>
+    <p>Please login to access your <span>Spaces</span> Dashboard</p>
+    <form [formGroup]="loginForm" (ngSubmit)="submitLoginForm()">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Username</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="username">
+        <p class="error-msg p-0"
+                   *ngIf="loginForm.controls?.['username']?.errors && (loginForm.controls?.['username']?.touched || loginForm.controls?.['username']?.dirty)">
+          {{
+            (loginForm.controls?.['username']?.hasError("required")
+                ? "field is required"
+                : loginForm.controls?.['username']?.hasError("email") ? 'Enter valid email' : null
+            )
+          }}
+        </p>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+
+        <p class="error-msg  p-0"
+                   *ngIf="loginForm.controls?.['password']?.errors && (loginForm.controls?.['password']?.touched || loginForm.controls?.['password']?.dirty)">
+          {{
+            (loginForm.controls?.['password']?.hasError("required")
+                ? "field is required" :
+                 null
+            )
+          }}
+        </p>
+      </div>
+      <div class="form-footer">
+        <a href="#">Forgot password?</a>
+        <button type="submit" class="btn">LOGIN</button>
+      </div>
+
+    </form>
+  </div>
+</div>

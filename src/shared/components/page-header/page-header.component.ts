@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'page-header',
@@ -10,4 +10,11 @@ import {Component, Input} from '@angular/core';
 export class PageHeaderComponent {
   @Input() pageName = 'users list';
   @Input() btnText = 'new user'
+
+  @Output() onBtnClick = new EventEmitter<void>();
+
+
+  handleBtnClick() {
+    this.onBtnClick.emit();
+  }
 }

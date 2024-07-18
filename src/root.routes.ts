@@ -1,9 +1,15 @@
 import { Routes } from '@angular/router';
+import {authGuard} from "./shared/guards/auth.guard";
 
 export const routes: Routes = [
   {
-    path:'login',
-    loadComponent: () => import('../auth/login/login.component')
+    path: 'app',
+    canActivate: [authGuard],
+    loadComponent: () => import('./app/app.component')
   },
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {
+    path:'login',
+    loadComponent: () => import('./auth/login/login.component')
+  },
+  {path: '', redirectTo: 'app', pathMatch: 'full'},
 ];

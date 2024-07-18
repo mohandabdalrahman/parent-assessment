@@ -4,12 +4,22 @@
     <span>actions</span>
   </div>
   <div class="list-body">
-    <div class="list-item">
-      <div class="list-item-content">
-        <img src="" alt="">
+    <div class="list-item"  *ngFor="let user of users"  [ngClass]="{'active': selectedUser?.id === user.id}" >
+      <div class="list-item-content" (click)="fetchUserDetails(user)">
+        <img [ngSrc]="user.avatar" alt="" height="55" width="55">
+        <span>{{user.first_name}} {{user.last_name}}</span>
       </div>
-      <div class="list-item-actions"></div>
+      <div class="list-item-actions">
+        <button (click)="openModal(user , 'userModal')"><img src="./assets/images/edit.png" alt="edit"></button>
+        <button (click)="openModal(user , 'deleteModal')"><img src="./assets/images/delete.png" alt="delete"></button>
+      </div>
 
     </div>
   </div>
+<drawer *ngIf="userDetails" [userDetails]="userDetails" (deleteUserEvent)="openModal($event , 'deleteModal')"
+        (editUserEvent)="openModal($event , 'userModal')"></drawer>
 </div>
+
+
+<delete-modal #deleteModal [selectedUser]="selectedUser" (deleteUserEvent)="handleDeleteUser($event)"></delete-modal>
+<add-edit-modal #userModal [selectedUser]="selectedUser" [isEditMode]="true"  (addEditUserEvent)="handleAddEditUser($event)"></add-edit-modal>

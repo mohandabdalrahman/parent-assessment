@@ -6,13 +6,7 @@ export interface LoginFormUiModel {
 }
 
 export interface LoginResponse {
-  status: number;
-  Message: string;
-  correlationId: string;
-  data: {
-    jwt: string;
-    refreshTokenExpiryDate: string;
-  }
+  token: string;
 }
 
 export type LoginFormType = {
