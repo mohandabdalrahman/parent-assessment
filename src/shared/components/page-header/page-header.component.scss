@@ -1,0 +1,32 @@
+.page_header {
+  height: 102px;
+  background-color: #DEDEDE;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  padding-inline: 1.5rem;
+  padding-top: 15px;
+
+  a {
+    color: #8E44AD;
+    font-size: 12px;
+  }
+
+  &-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+
+    h3 {
+      color: #34495E;
+      text-transform: capitalize;
+    }
+
+    button {
+      color: #FFFFFF;
+      border-radius: 20px;
+      background-color: #8E44AD;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+      text-transform: capitalize;
+    }
+  }
+}

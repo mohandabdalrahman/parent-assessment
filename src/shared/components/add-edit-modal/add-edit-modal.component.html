@@ -1,0 +1,22 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <label for="name" class="form-label">Disabled input</label>
+        <input type="text" id="name" class="form-control" placeholder="Name">
+      </div>
+      <div class="mb-3">
+        <label for="jobTitle" class="form-label">Disabled input</label>
+        <input type="text" id="jobTitle" class="form-control" placeholder="Job title">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.close('Save click')">Cancel</button>
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>

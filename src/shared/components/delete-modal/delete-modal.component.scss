@@ -1,0 +1,18 @@
+.modal{
+  &-footer {
+    justify-content: center;
+    button {
+      height: 40px;
+      width: 160px;
+      border: 1px solid #8E44AD;
+      border-radius: 20px;
+      background-color: #F5F5F5;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+      &.save{
+        background-color: #8E44AD;
+        color: #FFFFFF;
+      }
+    }
+  }
+
+}
